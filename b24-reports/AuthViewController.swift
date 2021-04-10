@@ -126,8 +126,8 @@ class AuthViewController: UIViewController {
          self.view.window?.rootViewController = TabBarController
          self.view.window?.makeKeyAndVisible()
          */
-        //as? CallsTableViewController
-        guard let callsVC = storyboard?.instantiateViewController(identifier: "NavigationController") else {return}
+
+        guard let callsVC = storyboard?.instantiateViewController(identifier: "NavigationController") as? UINavigationController else {return}
         view.window?.rootViewController = callsVC
         view.window?.makeKeyAndVisible()
     }
