@@ -12,6 +12,14 @@ class CallsTableViewController: UITableViewController {
 
     var handle: AuthStateDidChangeListenerHandle?
     
+    @IBAction func logoutAction(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // [START add_auth_listener]
@@ -115,10 +123,12 @@ class CallsTableViewController: UITableViewController {
 
     func transitionToLogin() {
         
-//        let authViewController = storyboard?.instantiateViewController(identifier: "AuthViewController") as? AuthViewController
-//        view.window?.rootViewController = authViewController
-//        view.window?.isHidden = false
-//        view.window?.makeKeyAndVisible()
+        /*
+        let authViewController = storyboard?.instantiateViewController(identifier: "AuthViewController") as? AuthViewController
+        view.window?.rootViewController = authViewController
+        view.window?.isHidden = false
+        view.window?.makeKeyAndVisible()
+        */
         
         guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "AuthViewController") as? AuthViewController else {return}
         loginVC.modalPresentationStyle = .fullScreen

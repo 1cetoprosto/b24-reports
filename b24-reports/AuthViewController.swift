@@ -93,21 +93,41 @@ class AuthViewController: UIViewController {
             showAlert()
             return
         }
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            guard error == nil else { return self.displayError(error) }
+        
+//        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+//            guard error == nil else { return self.displayError(error) }
+//        }
+//
+//        self.transitionToTabBarViewController()
+        
+        logIn(email: email, password: password) { (firebaseUser: FirebaseAuth.User?) in
+          // Your result is saved in firebaseUser variable
+          if firebaseUser != nil{
+            self.transitionToCallsTableViewController()
+          }
+
         }
-        self.transitionToTabBarViewController()
     }
     //}
     
-    private func transitionToTabBarViewController() {
+    func logIn(email: String, password: String, callbacK: @escaping (FirebaseAuth.User?) -> ()) {
+      Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+        if error != nil {
+          //print(error!)
+            callbacK(nil)
+        }
+        callbacK(user?.user)
+      }
+    }
+    
+    private func transitionToCallsTableViewController() {
         /*
          guard let TabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController else {return}
          self.view.window?.rootViewController = TabBarController
          self.view.window?.makeKeyAndVisible()
          */
-        
-        guard let callsVC = storyboard?.instantiateViewController(identifier: "CallsTableViewController") as? CallsTableViewController else {return}
+        //as? CallsTableViewController
+        guard let callsVC = storyboard?.instantiateViewController(identifier: "NavigationController") else {return}
         view.window?.rootViewController = callsVC
         view.window?.makeKeyAndVisible()
     }
