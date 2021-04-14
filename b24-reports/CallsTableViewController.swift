@@ -52,29 +52,46 @@ class CallsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // Setup the Cell
+        let nib = UINib(nibName: "CallsTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "CallsTableViewCell")
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        tableView.tableFooterView?.backgroundColor = UIColor(red: 50, green: 50, blue: 50, alpha: 1)
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return callItems.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CallsTableViewCell", for: indexPath) as! CallsTableViewCell
 
         // Configure the cell...
-
+        var currentItem: Call
+        
+        currentItem = callItems[indexPath.row]
+        
+        cell.manager.text = "\(currentItem.manager.firstName) \(currentItem.manager.lastName)"
+        cell.qtyIncomingCalls.text = String(currentItem.qtyIncomingCalls)
+        cell.qtyOutgoingCalls.text = String(currentItem.qtyOutgoingCalls)
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

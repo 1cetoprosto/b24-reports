@@ -3,10 +3,27 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "AuthViewController.logIn(email:password:callbacK:):AuthViewController.swift">
+         contextName = "loadManagersFromCloud():Model.swift">
          <PersistentStrings>
             <PersistentString
-               value = "user">
+               value = "err">
+            </PersistentString>
+            <PersistentString
+               value = "FIRFirestoreService">
+            </PersistentString>
+            <PersistentString
+               value = "querySnapshot">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Managers.addRecords(manager:):Managers+CoreDataClass.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CallsTableViewController.tableView(_:numberOfRowsInSection:):CallsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "callItems.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -17,10 +34,26 @@
                value = "error">
             </PersistentString>
             <PersistentString
-               value = "firebaseUser">
+               value = "authResult">
             </PersistentString>
             <PersistentString
-               value = "authResult">
+               value = "firebaseUser">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AuthViewController.logIn(email:password:callbacK:):AuthViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "user">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in loadManagersFromCloud():Model.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "document.data()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

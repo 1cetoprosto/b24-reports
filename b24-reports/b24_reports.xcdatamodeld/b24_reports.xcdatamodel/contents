@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Calls" representedClassName="Calls" syncable="YES">
+        <attribute name="callID" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="managerID" attributeType="String" customClassName="Managers"/>
+        <attribute name="qtyIncomingCalls" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="qtyOutgoingCalls" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timeOfIncoming" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="timeOfOutgoing" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="toManagers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Managers" inverseName="toCalls" inverseEntity="Managers"/>
+    </entity>
+    <entity name="Managers" representedClassName="Managers" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="managerID" attributeType="String"/>
+        <relationship name="toCalls" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Calls" inverseName="toManagers" inverseEntity="Calls"/>
+    </entity>
+    <elements>
+        <element name="Calls" positionX="-54" positionY="9" width="128" height="149"/>
+        <element name="Managers" positionX="235.566162109375" positionY="4.562164306640625" width="146.74072265625" height="89"/>
+    </elements>
 </model>

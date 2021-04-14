@@ -108,19 +108,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Izy-Vy-6mS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Calls" id="qnx-l5-dtQ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qnx-l5-dtQ" id="suB-dM-P19">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Y0j-RO-R7s" kind="show" trigger="accessoryAction" id="YZy-b7-iXQ"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="409-qj-I6l" id="Gb7-AL-ka0"/>
@@ -132,6 +119,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Log out" id="tci-4h-c7V">
                             <connections>
                                 <action selector="logoutAction:" destination="409-qj-I6l" id="UDS-EP-b3S"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="setting-bw" id="fKL-Uf-YmI">
+                            <connections>
+                                <segue destination="L5A-u1-lYd" kind="show" id="aWl-rq-roj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -153,7 +145,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbM-0c-SLX">
-                                <rect key="frame" x="149" y="345" width="77" height="21"/>
+                                <rect key="frame" x="149" y="323" width="77" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -170,7 +162,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Wd-Ov-1KF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2663.1999999999998" y="92.203898050974516"/>
+            <point key="canvasLocation" x="2553" y="461"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="J0M-Ro-Nc1">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" title="Settings" id="L5A-u1-lYd" customClass="SettingsViewController" customModule="b24_reports" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fhk-dZ-L12">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vk7-pf-tB5">
+                                <rect key="frame" x="140" y="317" width="94" height="33"/>
+                                <color key="backgroundColor" red="1" green="0.70196078429999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Update data"/>
+                                <connections>
+                                    <action selector="updateDataAction:" destination="L5A-u1-lYd" eventType="touchUpInside" id="D6b-FN-R6p"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1di-F3-rDa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Vk7-pf-tB5" firstAttribute="centerX" secondItem="1di-F3-rDa" secondAttribute="centerX" constant="-0.5" id="gnP-8w-hZt"/>
+                            <constraint firstItem="Vk7-pf-tB5" firstAttribute="centerY" secondItem="1di-F3-rDa" secondAttribute="centerY" constant="-22" id="z3L-NG-WIm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lXX-o0-y55"/>
+                    <connections>
+                        <outlet property="updateData" destination="Vk7-pf-tB5" id="mOy-VH-3Zf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6MV-jp-OlS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2553" y="-227"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="55V-sA-UzB">
@@ -193,6 +219,7 @@
     </scenes>
     <resources>
         <image name="Header" width="566" height="566"/>
+        <image name="setting-bw" width="75" height="75"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
