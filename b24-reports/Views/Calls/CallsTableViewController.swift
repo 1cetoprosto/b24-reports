@@ -31,6 +31,7 @@ class CallsTableViewController: UITableViewController {
             }
         }
         // [END add_auth_listener]
+        sortCall(items: callItems)
         self.tableView.reloadData()
     }
     
@@ -68,12 +69,18 @@ class CallsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return events.count
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let date = events[section].first!.date
+        let month = NSCalendar.current.dateComponents([.month], from: date).month!
+        return sections[month - 1]
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return callItems.count
+        return events[section].count
     }
 
     
@@ -83,9 +90,9 @@ class CallsTableViewController: UITableViewController {
         // Configure the cell...
         var currentItem: Call
         
-        currentItem = callItems[indexPath.row]
+        currentItem = events[indexPath.section][indexPath.row] //callItems[indexPath.row]
         
-        cell.manager.text = "\(currentItem.manager.firstName) \(currentItem.manager.lastName)"
+        cell.manager.text = "\(currentItem.manager?.firstName ?? "") \(currentItem.manager?.lastName ?? "")"
         cell.qtyIncomingCalls.text = String(currentItem.qtyIncomingCalls)
         cell.qtyOutgoingCalls.text = String(currentItem.qtyOutgoingCalls)
         

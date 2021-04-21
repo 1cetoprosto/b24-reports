@@ -3,16 +3,26 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "loadManagersFromCloud():Model.swift">
+         contextName = "Call.init(dictionary:):Model.swift">
          <PersistentStrings>
             <PersistentString
-               value = "err">
+               value = "dictionary[&quot;timeOfIncoming&quot;]">
             </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in loadManagersFromCloud():Model.swift">
+         <PersistentStrings>
             <PersistentString
-               value = "FIRFirestoreService">
+               value = "document.data()">
             </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CallsTableViewController.numberOfSections(in:):CallsTableViewController.swift">
+         <PersistentStrings>
             <PersistentString
-               value = "querySnapshot">
+               value = "events">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -20,10 +30,26 @@
          contextName = "Managers.addRecords(manager:):Managers+CoreDataClass.swift">
       </ContextState>
       <ContextState
-         contextName = "CallsTableViewController.tableView(_:numberOfRowsInSection:):CallsTableViewController.swift">
+         contextName = "sortCall(items:):Model.swift">
          <PersistentStrings>
             <PersistentString
-               value = "callItems.count">
+               value = "events">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "events.getter:Model.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "events">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AuthViewController.logIn(email:password:callbacK:):AuthViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "user">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -42,18 +68,46 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AuthViewController.logIn(email:password:callbacK:):AuthViewController.swift">
+         contextName = "Call.init(at:):Model.swift">
          <PersistentStrings>
             <PersistentString
-               value = "user">
+               value = "calls.date.description">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in loadManagersFromCloud():Model.swift">
+         contextName = "loadManagersFromCloud():Model.swift">
          <PersistentStrings>
             <PersistentString
+               value = "err">
+            </PersistentString>
+            <PersistentString
+               value = "FIRFirestoreService">
+            </PersistentString>
+            <PersistentString
+               value = "querySnapshot">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CallsTableViewController.tableView(_:numberOfRowsInSection:):CallsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "callItems.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in loadCallsFromCloud():Model.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "querySnapshot!.documents.count">
+            </PersistentString>
+            <PersistentString
                value = "document.data()">
+            </PersistentString>
+            <PersistentString
+               value = "call">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -102,6 +102,37 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		B142E9642629794300E86047 /* Calls */ = {
+			isa = PBXGroup;
+			children = (
+				B12E3303262071B00077B980 /* CallsTableViewController.swift */,
+				B14921E12626D14E006B3388 /* CallsTableViewCell.swift */,
+				B14921E22626D14E006B3388 /* CallsTableViewCell.xib */,
+			);
+			path = Calls;
+			sourceTree = "<group>";
+		};
+		B142E9652629799200E86047 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B14921CE262464C8006B3388 /* Calls+CoreDataClass.swift */,
+				B14921CB262464C7006B3388 /* Calls+CoreDataProperties.swift */,
+				B14921CC262464C7006B3388 /* Managers+CoreDataClass.swift */,
+				B14921CD262464C8006B3388 /* Managers+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B142E966262979CA00E86047 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B1DC0B7926205BDF00A8679C /* AuthViewController.swift */,
+				B14921DE262589AA006B3388 /* SettingsViewController.swift */,
+				B142E9642629794300E86047 /* Calls */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B14921D526255EBE006B3388 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,10 +144,7 @@
 		B17313E92622BC78008002DB /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				B14921CE262464C8006B3388 /* Calls+CoreDataClass.swift */,
-				B14921CB262464C7006B3388 /* Calls+CoreDataProperties.swift */,
-				B14921CC262464C7006B3388 /* Managers+CoreDataClass.swift */,
-				B14921CD262464C8006B3388 /* Managers+CoreDataProperties.swift */,
+				B142E9652629799200E86047 /* Models */,
 				B17313EA2622BC8A008002DB /* Model.swift */,
 			);
 			path = Core;
@@ -143,21 +171,17 @@
 		B1DC0B7426205BDF00A8679C /* b24-reports */ = {
 			isa = PBXGroup;
 			children = (
-				B14921D526255EBE006B3388 /* API */,
-				B12E33082620744E0077B980 /* Utility */,
 				B12E3307262072750077B980 /* Application */,
-				B1DC0B7926205BDF00A8679C /* AuthViewController.swift */,
+				B14921D526255EBE006B3388 /* API */,
 				B17313E92622BC78008002DB /* Core */,
-				B1DC0B7B26205BDF00A8679C /* Main.storyboard */,
-				B14921DE262589AA006B3388 /* SettingsViewController.swift */,
-				B14921E12626D14E006B3388 /* CallsTableViewCell.swift */,
-				B14921E22626D14E006B3388 /* CallsTableViewCell.xib */,
+				B142E966262979CA00E86047 /* Views */,
+				B12E33082620744E0077B980 /* Utility */,
 				B1DC0B8126205BE000A8679C /* Assets.xcassets */,
+				B1DC0B7B26205BDF00A8679C /* Main.storyboard */,
 				B1DC0B8326205BE000A8679C /* LaunchScreen.storyboard */,
 				B1DC0B8626205BE000A8679C /* Info.plist */,
 				B1DC0B7E26205BDF00A8679C /* b24_reports.xcdatamodeld */,
 				B1DC0B8D26206AAD00A8679C /* GoogleService-Info.plist */,
-				B12E3303262071B00077B980 /* CallsTableViewController.swift */,
 			);
 			path = "b24-reports";
 			sourceTree = "<group>";

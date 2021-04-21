@@ -33,6 +33,7 @@ struct Manager {
 struct Call {
     var callID: String
     var date: Date
+    var dateFormated: String
     var managerID: String
     var qtyIncomingCalls: Int
     var qtyOutgoingCalls: Int
@@ -50,16 +51,28 @@ struct Call {
             "timeOfOutgoing": timeOfOutgoing,
         ]
     }
-    var manager: Manager {
-        let managers = Managers().getRecords(at: managerID)[0]
-        let manager = Manager(at: managers)
-        return manager
+    var manager: Manager? {
+        let arrayManagers = Managers().getRecords(at: managerID)
+        if arrayManagers.count > 0 {
+            let managers = arrayManagers[0]
+            let manager = Manager(at: managers)
+            return manager
+        } else {
+            return nil
+        }
     }
     
     
     init(at calls: Calls) {
         self.callID = calls.callID
         self.date = calls.date
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.YYYY"
+        let dateFormated = formatter.string(from: calls.date)//.date(from: calls.date.description)
+        
+        self.dateFormated = dateFormated
+        
         self.managerID = calls.managerID
         self.qtyIncomingCalls = Int(calls.qtyIncomingCalls)
         self.qtyOutgoingCalls = Int(calls.qtyOutgoingCalls)
@@ -79,6 +92,13 @@ struct Call {
         else { return nil }
         self.callID = callID
         self.date = date.dateValue()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.YYYY"
+        let dateFormated = formatter.string(from: date.dateValue())
+        
+        self.dateFormated = dateFormated
+        
         self.managerID = managerID
         self.qtyIncomingCalls = qtyIncomingCalls
         self.qtyOutgoingCalls = qtyOutgoingCalls
@@ -100,37 +120,63 @@ var callItems: [Call] {
     return callArray
 }
 
-var filteredCallItems = [Call]()
-
+var events: [[Call]] = []
 
 /*
- func addItems(task: Task) {
- // writing to CoreData
- let tasks = Tasks()
- tasks.addRecords(task: task)
- 
- // writing to Firebase
- FIRFirestoreService.shared.addUpdateDocument(collection: "task", idDocement: task.taskID, data: task.dictionary)
- }
- 
- func deleteItem(at Index: Int) {
- 
- // delete in CoreData
- Tasks.init().deleteRecords(task: toDoItems[Index])
- 
- // delete in Firebase
- FIRFirestoreService.shared.deleteDocument(task: toDoItems[Index])
- }
- 
- func updateItems(task: Task) {
- // writing to CoreData
- let tasks = Tasks()
- tasks.updateRecords(task: task)
- 
- // writing to Firebase
- FIRFirestoreService.shared.addUpdateDocument(collection: "task", idDocement: task.taskID, data: task.dictionary)
- }
- */
+var events: [[Call]] {
+    
+    var firstMount: Int!
+    var tmpItems: [Call]!
+    var tmpEvents: [[Call]]
+    
+    tmpEvents = callItems.map { item in
+    
+        let month = NSCalendar.current.dateComponents([.month], from: item.date).month
+    
+        if firstMount == nil || firstMount != month {
+            firstMount = month
+            tmpItems = [item]
+        } else {
+            tmpItems.append(item)
+        }
+        return tmpItems
+    }
+    return tmpEvents
+}
+*/
+
+let sections = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+
+var item: Call!
+
+var filteredCallItems = [Call]()
+
+func sortCall(items: [Call]) {
+    
+    let sortedItems = items
+        .sorted { $0.date < $1.date }
+    //.map {$0.dateFormated}
+    //print(newArray)
+    
+    var firstMount: Int!
+    var tmpItems: [Call] = []
+    
+    for item in sortedItems {
+        let month = NSCalendar.current.dateComponents([.month], from: item.date).month
+        if firstMount == nil || firstMount != month {
+            if tmpItems.count > 0 {
+                events.append(tmpItems)
+            }
+            firstMount = month
+            tmpItems = [item]
+        } else {
+            tmpItems.append(item)
+        }
+    }
+    if tmpItems.count > 0 {
+        events.append(tmpItems)
+    }
+}
 
 func loadManagersFromCloud() {
     
@@ -168,10 +214,38 @@ func loadCallsFromCloud() {
             for document in querySnapshot!.documents {
                 if let call = Call(dictionary: document.data()) {
                     calls.addRecords(call: call)
-                }
+                } 
             }
         }
     }
 }
 
+/*
+ func addItems(task: Task) {
+ // writing to CoreData
+ let tasks = Tasks()
+ tasks.addRecords(task: task)
+ 
+ // writing to Firebase
+ FIRFirestoreService.shared.addUpdateDocument(collection: "task", idDocement: task.taskID, data: task.dictionary)
+ }
+ 
+ func deleteItem(at Index: Int) {
+ 
+ // delete in CoreData
+ Tasks.init().deleteRecords(task: toDoItems[Index])
+ 
+ // delete in Firebase
+ FIRFirestoreService.shared.deleteDocument(task: toDoItems[Index])
+ }
+ 
+ func updateItems(task: Task) {
+ // writing to CoreData
+ let tasks = Tasks()
+ tasks.updateRecords(task: task)
+ 
+ // writing to Firebase
+ FIRFirestoreService.shared.addUpdateDocument(collection: "task", idDocement: task.taskID, data: task.dictionary)
+ }
+ */
 
