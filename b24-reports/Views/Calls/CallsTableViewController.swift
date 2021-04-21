@@ -96,9 +96,20 @@ class CallsTableViewController: UITableViewController {
         cell.qtyIncomingCalls.text = String(currentItem.qtyIncomingCalls)
         cell.qtyOutgoingCalls.text = String(currentItem.qtyOutgoingCalls)
         
+        cell.accessoryType = .disclosureIndicator
+        
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        print(indexPath.row)
+        performSegue(withIdentifier: "goToDetailCallView", sender: self)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        performSegue(withIdentifier: "goToDetailCallView", sender: self)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -135,15 +146,30 @@ class CallsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "goToDetailCallView" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                
+                var call: Call
+//                if isFiltering {
+//                    task = filteredToDoItems[indexPath.row]
+//                } else {
+                    call = callItems[indexPath.row]
+//                }
+                
+                (segue.destination as? DetailCallViewController)?.call = call
+                
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
+        
     }
-    */
+    
 
     func transitionToLogin() {
         

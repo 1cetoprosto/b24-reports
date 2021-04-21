@@ -147,11 +147,13 @@ var events: [[Call]] {
 
 let sections = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
 
-var item: Call!
+//var item: Call!
 
 var filteredCallItems = [Call]()
 
 func sortCall(items: [Call]) {
+    
+    events.removeAll()
     
     let sortedItems = items
         .sorted { $0.date < $1.date }

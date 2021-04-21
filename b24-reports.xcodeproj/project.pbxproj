@@ -26,6 +26,7 @@
 		B1DC0B8226205BE000A8679C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1DC0B8126205BE000A8679C /* Assets.xcassets */; };
 		B1DC0B8526205BE000A8679C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1DC0B8326205BE000A8679C /* LaunchScreen.storyboard */; };
 		B1DC0B8E26206AAD00A8679C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1DC0B8D26206AAD00A8679C /* GoogleService-Info.plist */; };
+		B1F845FA2630157E00B2DB4B /* DetailCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F845F92630157E00B2DB4B /* DetailCallViewController.swift */; };
 		EFACE491B59722BA037A4151 /* Pods_b24_reports.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE750F2C11952975EB4B82FC /* Pods_b24_reports.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		B1DC0B8426205BE000A8679C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1DC0B8626205BE000A8679C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1DC0B8D26206AAD00A8679C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B1F845F92630157E00B2DB4B /* DetailCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCallViewController.swift; sourceTree = "<group>"; };
 		DE15E0FB874D1EEC773475E3 /* Pods-b24-reports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-b24-reports.release.xcconfig"; path = "Target Support Files/Pods-b24-reports/Pods-b24-reports.release.xcconfig"; sourceTree = "<group>"; };
 		FE750F2C11952975EB4B82FC /* Pods_b24_reports.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_b24_reports.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -108,6 +110,7 @@
 				B12E3303262071B00077B980 /* CallsTableViewController.swift */,
 				B14921E12626D14E006B3388 /* CallsTableViewCell.swift */,
 				B14921E22626D14E006B3388 /* CallsTableViewCell.xib */,
+				B1F845F92630157E00B2DB4B /* DetailCallViewController.swift */,
 			);
 			path = Calls;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				B12E3304262071B00077B980 /* CallsTableViewController.swift in Sources */,
 				B14921D726255EEB006B3388 /* FIRFirestoreSevice.swift in Sources */,
 				B1DC0B7626205BDF00A8679C /* AppDelegate.swift in Sources */,
+				B1F845FA2630157E00B2DB4B /* DetailCallViewController.swift in Sources */,
 				B14921D2262464C8006B3388 /* Calls+CoreDataProperties.swift in Sources */,
 				B1DC0B8026205BDF00A8679C /* b24_reports.xcdatamodeld in Sources */,
 				B14921DF262589AA006B3388 /* SettingsViewController.swift in Sources */,

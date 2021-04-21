@@ -131,21 +131,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
+                    <connections>
+                        <segue destination="Y0j-RO-R7s" kind="show" identifier="goToDetailCallView" id="fen-Tb-kyw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKx-zF-L5H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1802.4000000000001" y="93.103448275862078"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Call View Controller-->
         <scene sceneID="ndg-4i-LNs">
             <objects>
-                <viewController id="Y0j-RO-R7s" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailCallViewController" id="Y0j-RO-R7s" customClass="DetailCallViewController" customModule="b24_reports" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a7l-ik-iTL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbM-0c-SLX">
-                                <rect key="frame" x="149" y="323" width="77" height="21"/>
+                                <rect key="frame" x="149" y="345" width="77" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

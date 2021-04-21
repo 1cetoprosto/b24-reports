@@ -30,6 +30,14 @@
          contextName = "Managers.addRecords(manager:):Managers+CoreDataClass.swift">
       </ContextState>
       <ContextState
+         contextName = "CallsTableViewController.viewWillAppear(_:):CallsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "callItems">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "sortCall(items:):Model.swift">
          <PersistentStrings>
             <PersistentString
@@ -60,10 +68,10 @@
                value = "error">
             </PersistentString>
             <PersistentString
-               value = "authResult">
+               value = "firebaseUser">
             </PersistentString>
             <PersistentString
-               value = "firebaseUser">
+               value = "authResult">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
