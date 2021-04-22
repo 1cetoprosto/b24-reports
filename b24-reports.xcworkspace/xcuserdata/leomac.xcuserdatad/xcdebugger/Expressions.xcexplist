@@ -76,6 +76,37 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "DetailCallViewController.viewDidLoad():DetailCallViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "call != nil">
+            </PersistentString>
+            <PersistentString
+               value = "call.dateFormated">
+            </PersistentString>
+            <PersistentString
+               value = "call">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CallsTableViewController.prepare(for:sender:):CallsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tableView">
+            </PersistentString>
+            <PersistentString
+               value = "events[0][1]">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.section">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Call.init(at:):Model.swift">
          <PersistentStrings>
             <PersistentString

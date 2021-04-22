@@ -159,7 +159,7 @@ class CallsTableViewController: UITableViewController {
 //                if isFiltering {
 //                    task = filteredToDoItems[indexPath.row]
 //                } else {
-                    call = callItems[indexPath.row]
+                    call = events[indexPath.section][indexPath.row] //callItems[indexPath.row]
 //                }
                 
                 (segue.destination as? DetailCallViewController)?.call = call
