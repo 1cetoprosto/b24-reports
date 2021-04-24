@@ -11,6 +11,7 @@ import FirebaseAuth
 class CallsTableViewController: UITableViewController {
 
     var handle: AuthStateDidChangeListenerHandle?
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBAction func logoutAction(_ sender: Any) {
         do {
@@ -31,8 +32,13 @@ class CallsTableViewController: UITableViewController {
             }
         }
         // [END add_auth_listener]
+        
+        //self.tableView.frame = CGRect(x: 16, y: 30, width: 300, height: 100)
+        addControl()
         sortCall(items: callItems)
-        self.tableView.reloadData()
+   
+        
+        //self.tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,7 +68,36 @@ class CallsTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.tableFooterView?.backgroundColor = UIColor(red: 50, green: 50, blue: 50, alpha: 1)
+        tableView.frame = CGRect(x: 16, y: 30, width: 300, height: 100)
+    }
+    
+    func addControl()  {
+        let items = ["Day", "Week", "Month"]
+        let segmentedControl = UISegmentedControl(items: items)
         
+        // Set up Frame and SegmentedControl
+        let frame = UIScreen.main.bounds
+        segmentedControl.frame = CGRect(x: frame.minX + 16, y: frame.minY + 0,
+                                        width: frame.width - 32, height: 30)
+        
+        //segmentedControl.frame = CGRect(x: 16, y: 0, width: 300, height: 30)
+        segmentedControl.addTarget(self, action: #selector(segmentAction(_:)), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = 1
+        segmentedControl.tintColor = UIColor.black
+        tableView.addSubview(segmentedControl)
+    }
+    
+    @objc func segmentAction(_ segmentedControl: UISegmentedControl) {
+        switch (segmentedControl.selectedSegmentIndex) {
+        case 0:
+            break // Day
+        case 1:
+            break // Week
+        case 2:
+            break // Month
+        default:
+            break
+        }
     }
 
     // MARK: - Table view data source
@@ -102,12 +137,10 @@ class CallsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        print(indexPath.row)
         performSegue(withIdentifier: "goToDetailCallView", sender: self)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
         performSegue(withIdentifier: "goToDetailCallView", sender: self)
     }
 

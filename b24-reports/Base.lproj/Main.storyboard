@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1JM-Hg-R9K">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aWz-IS-QJd">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -105,9 +105,10 @@
         <scene sceneID="VVd-9q-RwW">
             <objects>
                 <tableViewController storyboardIdentifier="CallsTableViewController" title="Calls" id="409-qj-I6l" customClass="CallsTableViewController" customModule="b24_reports" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Izy-Vy-6mS">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Izy-Vy-6mS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="409-qj-I6l" id="Gb7-AL-ka0"/>
@@ -132,12 +133,40 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
-                        <segue destination="Y0j-RO-R7s" kind="show" identifier="goToDetailCallView" id="fen-Tb-kyw"/>
+                        <outlet property="segmentedControl" destination="HbL-nb-vPu" id="Hv8-wX-Gxc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKx-zF-L5H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="HbL-nb-vPu">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Day"/>
+                        <segment title="Week"/>
+                        <segment title="Month"/>
+                    </segments>
+                </segmentedControl>
             </objects>
             <point key="canvasLocation" x="1802.4000000000001" y="93.103448275862078"/>
+        </scene>
+        <!--Calls View Controller-->
+        <scene sceneID="XrD-Y4-ZJm">
+            <objects>
+                <viewController id="FbA-s0-age" customClass="CallsViewController" customModule="b24_reports" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aDb-ZD-C5W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cHC-aG-LK5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="g8f-AJ-Pci"/>
+                    <connections>
+                        <segue destination="Y0j-RO-R7s" kind="show" identifier="goToDetailCallView" id="WRA-io-BPJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a3r-IH-2m5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2740" y="804.64767616191909"/>
         </scene>
         <!--Detail Call View Controller-->
         <scene sceneID="ndg-4i-LNs">
@@ -275,7 +304,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Wd-Ov-1KF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2553" y="461"/>
+            <point key="canvasLocation" x="3492" y="805"/>
         </scene>
         <!--Settings-->
         <scene sceneID="J0M-Ro-Nc1">
@@ -328,6 +357,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZw-cV-AJc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="863.20000000000005" y="93.103448275862078"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="U13-QP-udP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aWz-IS-QJd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rtw-QP-03l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FbA-s0-age" kind="relationship" relationship="rootViewController" id="J8H-Ap-MYu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z1r-Jb-jwo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1800.8" y="804.64767616191909"/>
         </scene>
     </scenes>
     <resources>

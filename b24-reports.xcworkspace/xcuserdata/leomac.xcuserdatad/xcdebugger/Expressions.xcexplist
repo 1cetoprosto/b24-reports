@@ -30,10 +30,16 @@
          contextName = "Managers.addRecords(manager:):Managers+CoreDataClass.swift">
       </ContextState>
       <ContextState
-         contextName = "CallsTableViewController.viewWillAppear(_:):CallsTableViewController.swift">
+         contextName = "DetailCallViewController.viewDidLoad():DetailCallViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "callItems">
+               value = "call != nil">
+            </PersistentString>
+            <PersistentString
+               value = "call">
+            </PersistentString>
+            <PersistentString
+               value = "call.dateFormated">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -68,24 +74,10 @@
                value = "error">
             </PersistentString>
             <PersistentString
-               value = "firebaseUser">
-            </PersistentString>
-            <PersistentString
                value = "authResult">
             </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "DetailCallViewController.viewDidLoad():DetailCallViewController.swift">
-         <PersistentStrings>
             <PersistentString
-               value = "call != nil">
-            </PersistentString>
-            <PersistentString
-               value = "call.dateFormated">
-            </PersistentString>
-            <PersistentString
-               value = "call">
+               value = "firebaseUser">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -103,6 +95,17 @@
             </PersistentString>
             <PersistentString
                value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CallsTableViewController.viewWillAppear(_:):CallsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "callItems">
+            </PersistentString>
+            <PersistentString
+               value = "UIScreen.mainScreen().bounds">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -147,6 +150,14 @@
             </PersistentString>
             <PersistentString
                value = "call">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CallsViewController.tableView(_:numberOfRowsInSection:):CallsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "events">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
