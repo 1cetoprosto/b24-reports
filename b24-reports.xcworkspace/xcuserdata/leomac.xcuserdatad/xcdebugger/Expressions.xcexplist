@@ -36,10 +36,10 @@
                value = "call != nil">
             </PersistentString>
             <PersistentString
-               value = "call">
+               value = "call.dateFormated">
             </PersistentString>
             <PersistentString
-               value = "call.dateFormated">
+               value = "call">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -74,10 +74,10 @@
                value = "error">
             </PersistentString>
             <PersistentString
-               value = "authResult">
+               value = "firebaseUser">
             </PersistentString>
             <PersistentString
-               value = "firebaseUser">
+               value = "authResult">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -106,6 +106,17 @@
             </PersistentString>
             <PersistentString
                value = "UIScreen.mainScreen().bounds">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CallsViewController.tableView(_:titleForHeaderInSection:):CallsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "po NSCalendar.current.dateComponents([.weekOfYear], from: date)">
+            </PersistentString>
+            <PersistentString
+               value = "segmentedControl.selectedSegmentIndex">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

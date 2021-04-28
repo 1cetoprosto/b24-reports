@@ -107,6 +107,12 @@ struct Call {
     }
 }
 
+enum Periods {
+    case day
+    case week
+    case month
+}
+
 var callItems: [Call] {
     
     let array = Calls.init().getRecords()
@@ -120,7 +126,7 @@ var callItems: [Call] {
     return callArray
 }
 
-var events: [[Call]] = []
+var calls: [[Call]] = []
 
 /*
 var events: [[Call]] {
@@ -145,39 +151,68 @@ var events: [[Call]] {
 }
 */
 
-let sections = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+//var days
+//var weeks
+//var months: [String] = {
+//
+//    return ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+//}
+//
+//let sections = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+
+
 
 //var item: Call!
 
 var filteredCallItems = [Call]()
 
-func sortCall(items: [Call]) {
+func sortCall(items: [Call], at period: Periods) {
     
-    events.removeAll()
+    if items.count > 0 {
+        calls.removeAll()
+    }
     
     let sortedItems = items
         .sorted { $0.date < $1.date }
     //.map {$0.dateFormated}
-    //print(newArray)
     
-    var firstMount: Int!
+    var firstItem: Int!
     var tmpItems: [Call] = []
+    var groupingPeriod: Int?
     
     for item in sortedItems {
-        let month = NSCalendar.current.dateComponents([.month], from: item.date).month
-        if firstMount == nil || firstMount != month {
+        switch period {
+        case .day:
+            groupingPeriod = NSCalendar.current.dateComponents([.day], from: item.date).day
+        case .week:
+            groupingPeriod = NSCalendar.current.dateComponents([.weekOfYear], from: item.date).weekOfYear
+        case .month:
+            groupingPeriod = NSCalendar.current.dateComponents([.month], from: item.date).month
+        }
+        
+        if firstItem == nil || firstItem != groupingPeriod {
             if tmpItems.count > 0 {
-                events.append(tmpItems)
+                calls.append(tmpItems)
             }
-            firstMount = month
+            firstItem = groupingPeriod
             tmpItems = [item]
         } else {
             tmpItems.append(item)
         }
     }
     if tmpItems.count > 0 {
-        events.append(tmpItems)
+        calls.append(tmpItems)
     }
+    
+    //sort calls by lastname
+    var newCalls = [[Call]]()
+    for periodOfCall in calls {
+        let sortedCalls = periodOfCall
+            .sorted { $0.qtyIncomingCalls < $1.qtyIncomingCalls }
+        newCalls.append(sortedCalls)
+    }
+    calls = newCalls
+    
 }
 
 func loadManagersFromCloud() {
