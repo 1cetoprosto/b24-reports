@@ -78,7 +78,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         view.addSubview(tableView)
         
         
-        sortCall(items: callItems, at: .day)
+        groupCall(items: callItems, at: .day)
         setUpNavigation()
         setUpgroupedLabel()
         setUpSegmentedControl()
@@ -131,20 +131,9 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func segmentAction(_ segmentedControl: UISegmentedControl) {
-        switch (segmentedControl.selectedSegmentIndex) {
-        case 0:
-            sortCall(items: callItems, at: .day)
-            //break // Day
-        case 1:
-            sortCall(items: callItems, at: .week)
-            //break // Week
-        case 2:
-            sortCall(items: callItems, at: .month)
-            //break // Month
-        default:
-            sortCall(items: callItems, at: .day)
-            //break
-        }
+        
+        groupCall(items: callItems, at: Period(segmentedControl.selectedSegmentIndex))
+        
         tableView.reloadData()
     }
     
@@ -157,25 +146,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let date = calls[section].first!.date
-        let formatter = DateFormatter()
-        let titleSection: String
-        
-        switch (segmentedControl.selectedSegmentIndex) {
-        case 0:
-            formatter.dateFormat = "d MMMM YYYY"
-            titleSection = formatter.string(from: date)
-        case 1:
-            formatter.dateFormat = "d MMMM YYYY"
-            titleSection = "\(formatter.string(from: date.startOfWeek)) - \(formatter.string(from: date.endOfWeek))"
-        case 2:
-            formatter.dateFormat = "MMMM YYYY"
-            titleSection = formatter.string(from: date)
-        default:
-            formatter.dateFormat = "d MMMM YYYY"
-            titleSection = formatter.string(from: date)
-        }
-               
-        return titleSection
+        return groupedPeriod(at: date, period: Period(segmentedControl.selectedSegmentIndex))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -263,4 +234,25 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+}
+
+func Period(_ selectedSegmentIndex: Int) -> Periods {
+    
+    let period: Periods
+    
+    switch (selectedSegmentIndex) {
+    case 0:
+        period = .day
+    //break // Day
+    case 1:
+        period =  .week
+    //break // Week
+    case 2:
+        period =  .month
+    //break // Month
+    default:
+        period =  .day
+    //break
+    }
+    return period
 }

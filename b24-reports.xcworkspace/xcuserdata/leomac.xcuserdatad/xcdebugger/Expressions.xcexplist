@@ -36,10 +36,10 @@
                value = "call != nil">
             </PersistentString>
             <PersistentString
-               value = "call.dateFormated">
+               value = "call">
             </PersistentString>
             <PersistentString
-               value = "call">
+               value = "call.dateFormated">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -52,10 +52,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "events.getter:Model.swift">
+         contextName = "CallsViewController.tableView(_:titleForHeaderInSection:):CallsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "events">
+               value = "po NSCalendar.current.dateComponents([.weekOfYear], from: date)">
+            </PersistentString>
+            <PersistentString
+               value = "segmentedControl.selectedSegmentIndex">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -74,10 +77,10 @@
                value = "error">
             </PersistentString>
             <PersistentString
-               value = "firebaseUser">
+               value = "authResult">
             </PersistentString>
             <PersistentString
-               value = "authResult">
+               value = "firebaseUser">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -99,6 +102,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "events.getter:Model.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "events">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CallsTableViewController.viewWillAppear(_:):CallsTableViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -110,13 +121,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CallsViewController.tableView(_:titleForHeaderInSection:):CallsViewController.swift">
+         contextName = "sortCall(items:at:):Model.swift">
          <PersistentStrings>
             <PersistentString
-               value = "po NSCalendar.current.dateComponents([.weekOfYear], from: date)">
-            </PersistentString>
-            <PersistentString
-               value = "segmentedControl.selectedSegmentIndex">
+               value = "calls">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

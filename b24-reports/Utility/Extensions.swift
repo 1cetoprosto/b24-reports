@@ -36,3 +36,7 @@ extension Date {
         return Calendar.current.date(byAdding: .second, value: 604799, to: self.startOfWeek)!
     }
 }
+
+extension Sequence  {
+    func sum<T: AdditiveArithmetic>(_ keyPath: KeyPath<Element, T>) -> T { reduce(.zero) { $0 + $1[keyPath: keyPath] } }
+}

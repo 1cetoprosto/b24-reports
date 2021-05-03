@@ -53,7 +53,7 @@ struct Call {
     }
     var manager: Manager? {
         let arrayManagers = Managers().getRecords(at: managerID)
-        if arrayManagers.count > 0 {
+        if !arrayManagers.isEmpty {
             let managers = arrayManagers[0]
             let manager = Manager(at: managers)
             return manager
@@ -80,6 +80,16 @@ struct Call {
         self.timeOfOutgoing = calls.timeOfOutgoing
     }
     
+    init(dateFormated: String, managerID: String, qtyIncomingCalls: Int, qtyOutgoingCalls: Int, timeOfIncoming: Double, timeOfOutgoing: Double) {
+        self.callID = ""
+        self.date = Date()
+        self.dateFormated = dateFormated
+        self.managerID = managerID
+        self.qtyIncomingCalls = qtyIncomingCalls
+        self.qtyOutgoingCalls = qtyOutgoingCalls
+        self.timeOfIncoming = timeOfIncoming
+        self.timeOfOutgoing = timeOfOutgoing
+    }
     
     init?(dictionary: [String:Any]) {
         guard let callID = dictionary["callID"] as? String,
@@ -127,48 +137,86 @@ var callItems: [Call] {
 }
 
 var calls: [[Call]] = []
-
-/*
-var events: [[Call]] {
-    
-    var firstMount: Int!
-    var tmpItems: [Call]!
-    var tmpEvents: [[Call]]
-    
-    tmpEvents = callItems.map { item in
-    
-        let month = NSCalendar.current.dateComponents([.month], from: item.date).month
-    
-        if firstMount == nil || firstMount != month {
-            firstMount = month
-            tmpItems = [item]
-        } else {
-            tmpItems.append(item)
-        }
-        return tmpItems
-    }
-    return tmpEvents
-}
-*/
-
-//var days
-//var weeks
-//var months: [String] = {
-//
-//    return ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
-//}
-//
-//let sections = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
-
-
-
-//var item: Call!
-
 var filteredCallItems = [Call]()
 
-func sortCall(items: [Call], at period: Periods) {
+
+func groupedPeriod(at date: Date, period: Periods) -> String {
+    let formatter = DateFormatter()
+    var groupedPeriod: String = ""
     
-    if items.count > 0 {
+    switch (period) {
+    case .day:
+        formatter.dateFormat = "d MMMM YYYY"
+        groupedPeriod = formatter.string(from: date)
+    case .week:
+        formatter.dateFormat = "d MMMM YYYY"
+        groupedPeriod = "\(formatter.string(from: date.startOfWeek)) - \(formatter.string(from: date.endOfWeek))"
+    case .month:
+        formatter.dateFormat = "MMMM YYYY"
+        groupedPeriod = formatter.string(from: date)
+    default:
+        formatter.dateFormat = "d MMMM YYYY"
+        groupedPeriod = formatter.string(from: date)
+    }
+    
+    return groupedPeriod
+}
+
+fileprivate func collapsCalls(at period: Periods) -> [[Call]] {
+    //collaps calls by managerID
+    var newCalls = [[Call]]()
+    var dateFormated: String = ""
+    
+    for periodOfCall in calls {
+        
+        var sortedList = [Call]()
+        var qtyIncomingCalls: Int = 0
+        var qtyOutgoingCalls: Int = 0
+        var timeOfIncoming: Double = 0
+        var timeOfOutgoing: Double = 0
+        var firstCall: String!
+        
+        let periodOfCall = periodOfCall.sorted { $0.managerID < $1.managerID }
+        for i in periodOfCall {
+            
+            dateFormated = groupedPeriod(at: i.date, period: period)
+            
+            if firstCall == nil {
+                firstCall = i.managerID
+                qtyIncomingCalls = i.qtyIncomingCalls
+                qtyOutgoingCalls = i.qtyOutgoingCalls
+                timeOfIncoming = i.timeOfIncoming
+                timeOfOutgoing = i.timeOfOutgoing
+            } else {
+                if firstCall != i.managerID {
+                    sortedList.append(Call(dateFormated: dateFormated, managerID: firstCall, qtyIncomingCalls: qtyIncomingCalls, qtyOutgoingCalls: qtyOutgoingCalls, timeOfIncoming: timeOfIncoming, timeOfOutgoing: timeOfOutgoing))
+                    firstCall = i.managerID
+                    qtyIncomingCalls = i.qtyIncomingCalls
+                    qtyOutgoingCalls = i.qtyOutgoingCalls
+                    timeOfIncoming = i.timeOfIncoming
+                    timeOfOutgoing = i.timeOfOutgoing
+                } else {
+                    // summing values
+                    qtyIncomingCalls += i.qtyIncomingCalls
+                    qtyOutgoingCalls += i.qtyOutgoingCalls
+                    timeOfIncoming += i.timeOfIncoming
+                    timeOfOutgoing += i.timeOfOutgoing
+                }
+            }
+        }
+        sortedList.append(Call(dateFormated: dateFormated, managerID: firstCall, qtyIncomingCalls: qtyIncomingCalls, qtyOutgoingCalls: qtyOutgoingCalls, timeOfIncoming: timeOfIncoming, timeOfOutgoing: timeOfOutgoing))
+        newCalls.append(sortedList)
+        //sortedList.removeAll()
+        
+        //        let sortedCalls = periodOfCall
+        //            .sorted { $0.qtyIncomingCalls < $1.qtyIncomingCalls }
+    }
+    return newCalls
+}
+
+func groupCall(items: [Call], at period: Periods) {
+    
+    if !items.isEmpty {
         calls.removeAll()
     }
     
@@ -191,7 +239,7 @@ func sortCall(items: [Call], at period: Periods) {
         }
         
         if firstItem == nil || firstItem != groupingPeriod {
-            if tmpItems.count > 0 {
+            if !tmpItems.isEmpty {
                 calls.append(tmpItems)
             }
             firstItem = groupingPeriod
@@ -200,19 +248,11 @@ func sortCall(items: [Call], at period: Periods) {
             tmpItems.append(item)
         }
     }
-    if tmpItems.count > 0 {
+    if !tmpItems.isEmpty {
         calls.append(tmpItems)
     }
     
-    //sort calls by lastname
-    var newCalls = [[Call]]()
-    for periodOfCall in calls {
-        let sortedCalls = periodOfCall
-            .sorted { $0.qtyIncomingCalls < $1.qtyIncomingCalls }
-        newCalls.append(sortedCalls)
-    }
-    calls = newCalls
-    
+    calls = collapsCalls(at: period)
 }
 
 func loadManagersFromCloud() {
