@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B12E330A262074660077B980 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12E3309262074660077B980 /* Extensions.swift */; };
+		B13EA89F26412C25001083EE /* FirestoreLoaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13EA89E26412C25001083EE /* FirestoreLoaders.swift */; };
 		B14921CF262464C8006B3388 /* Calls+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14921CE262464C8006B3388 /* Calls+CoreDataClass.swift */; };
 		B14921D0262464C8006B3388 /* Managers+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14921CC262464C7006B3388 /* Managers+CoreDataClass.swift */; };
 		B14921D1262464C8006B3388 /* Managers+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14921CD262464C8006B3388 /* Managers+CoreDataProperties.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		9DF7F624C5C87EEF914EA59E /* Pods-b24-reports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-b24-reports.debug.xcconfig"; path = "Target Support Files/Pods-b24-reports/Pods-b24-reports.debug.xcconfig"; sourceTree = "<group>"; };
 		B12E3309262074660077B980 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B13EA89E26412C25001083EE /* FirestoreLoaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreLoaders.swift; sourceTree = "<group>"; };
 		B14921CB262464C7006B3388 /* Calls+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Calls+CoreDataProperties.swift"; path = "/Users/leomac/Documents/Swift/b24-reports/b24-reports/Core/Calls+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		B14921CC262464C7006B3388 /* Managers+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Managers+CoreDataClass.swift"; path = "/Users/leomac/Documents/Swift/b24-reports/b24-reports/Core/Managers+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		B14921CD262464C8006B3388 /* Managers+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Managers+CoreDataProperties.swift"; path = "/Users/leomac/Documents/Swift/b24-reports/b24-reports/Core/Managers+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				B14921D626255EEB006B3388 /* FIRFirestoreSevice.swift */,
+				B13EA89E26412C25001083EE /* FirestoreLoaders.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				B14921DF262589AA006B3388 /* SettingsViewController.swift in Sources */,
 				B14921E32626D14E006B3388 /* CallsTableViewCell.swift in Sources */,
 				B1DC0B7826205BDF00A8679C /* SceneDelegate.swift in Sources */,
+				B13EA89F26412C25001083EE /* FirestoreLoaders.swift in Sources */,
 				B14921CF262464C8006B3388 /* Calls+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -137,7 +137,7 @@ var callItems: [Call] {
 }
 
 var calls: [[Call]] = []
-var filteredCallItems = [Call]()
+//var filteredCallItems = [Call]()
 
 
 func groupedPeriod(at date: Date, period: Periods) -> String {
@@ -255,47 +255,7 @@ func groupCall(items: [Call], at period: Periods) {
     calls = collapsCalls(at: period)
 }
 
-func loadManagersFromCloud() {
-    
-    let managers = Managers()
-    
-    // erase CoreData
-    managers.deleteAllRecords()
-    
-    // writing call to CoreData
-    FIRFirestoreService.shared.db.collection("managers").getDocuments() { (querySnapshot, err) in
-        if let err = err {
-            print("Error getting documents: \(err)")
-        } else {
-            for document in querySnapshot!.documents {
-                if let manager = Manager(dictionary: document.data()) {
-                    managers.addRecords(manager: manager)
-                }
-            }
-        }
-    }
-}
 
-func loadCallsFromCloud() {
-    
-    let calls = Calls()
-    
-    // erase CoreData
-    calls.deleteAllRecords()
-    
-    // writing call to CoreData
-    FIRFirestoreService.shared.db.collection("calls").getDocuments() { (querySnapshot, err) in
-        if let err = err {
-            print("Error getting documents: \(err)")
-        } else {
-            for document in querySnapshot!.documents {
-                if let call = Call(dictionary: document.data()) {
-                    calls.addRecords(call: call)
-                } 
-            }
-        }
-    }
-}
 
 /*
  func addItems(task: Task) {
