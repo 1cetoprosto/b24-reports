@@ -22,6 +22,13 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return tableView
     }()
     
+//    let myRefreshControl: UIRefreshControl = {
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.attributedTitle = NSAttributedString(string: "There is an update...")
+//        refreshControl.addTarget(self, action: #selector(handleRefreshControl(sender:)), for: .valueChanged)
+//        return refreshControl
+//    }()
+    
     let groupedLabel: UILabel = {
         let groupedLabel = UILabel()
         groupedLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +52,25 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    @objc private func handleRefreshControl(sender: UIRefreshControl) {
+        
+        loadManagersFromCloud()
+        loadCallsFromCloud()
+        groupCall(items: callItems, at: .day)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            self.tableView.reloadData()
+            sender.endRefreshing()
+        }
+    }
+    
+    @IBAction func unwindToCallsViewController(segue: UIStoryboardSegue) {
+        
+        groupCall(items: callItems, at: .day)
+        
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +106,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         groupCall(items: callItems, at: .day)
         setUpNavigation()
+        
         setUpgroupedLabel()
         setUpSegmentedControl()
         setUpTableView()
@@ -88,6 +115,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tableView.delegate = self
         tableView.dataSource = self
+
     }
     
     // MARK: - SetUp View's
@@ -124,10 +152,21 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func setUpTableView() {
+        
+        //tableView.refreshControl = myRefreshControl
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Load data...")
+        tableView.refreshControl?.addTarget(self,
+                                            action: #selector(handleRefreshControl(sender:)),
+                                            for: .valueChanged)
+
         tableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
         tableView.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        tableView.tableFooterView = UIView()
+        
     }
     
     @objc func segmentAction(_ segmentedControl: UISegmentedControl) {
@@ -141,17 +180,17 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return calls.count
+        return groupedCalls.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let date = calls[section].first!.date
+        let date = groupedCalls[section].first!.date
         return groupedPeriod(at: date, period: Period(segmentedControl.selectedSegmentIndex))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return calls[section].count
+        return groupedCalls[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -160,7 +199,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Configure the cell...
         var currentItem: Call
         
-        currentItem = calls[indexPath.section][indexPath.row] //callItems[indexPath.row]
+        currentItem = groupedCalls[indexPath.section][indexPath.row] //callItems[indexPath.row]
         
         cell.manager.text = "\(currentItem.manager?.firstName ?? "") \(currentItem.manager?.lastName ?? "")"
         cell.qtyIncomingCalls.text = String(currentItem.qtyIncomingCalls)
@@ -190,7 +229,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 //                if isFiltering {
                 //                    task = filteredToDoItems[indexPath.row]
                 //                } else {
-                call = calls[indexPath.section][indexPath.row] //callItems[indexPath.row]
+                call = groupedCalls[indexPath.section][indexPath.row] //callItems[indexPath.row]
                 //                }
                 
                 (segue.destination as? DetailCallViewController)?.call = call

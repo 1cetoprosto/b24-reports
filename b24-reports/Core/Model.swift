@@ -136,7 +136,7 @@ var callItems: [Call] {
     return callArray
 }
 
-var calls: [[Call]] = []
+var groupedCalls: [[Call]] = []
 //var filteredCallItems = [Call]()
 
 
@@ -167,7 +167,7 @@ fileprivate func collapsCalls(at period: Periods) -> [[Call]] {
     var newCalls = [[Call]]()
     var dateFormated: String = ""
     
-    for periodOfCall in calls {
+    for periodOfCall in groupedCalls {
         
         var sortedList = [Call]()
         var qtyIncomingCalls: Int = 0
@@ -217,7 +217,7 @@ fileprivate func collapsCalls(at period: Periods) -> [[Call]] {
 func groupCall(items: [Call], at period: Periods) {
     
     if !items.isEmpty {
-        calls.removeAll()
+        groupedCalls.removeAll()
     }
     
     let sortedItems = items
@@ -240,7 +240,7 @@ func groupCall(items: [Call], at period: Periods) {
         
         if firstItem == nil || firstItem != groupingPeriod {
             if !tmpItems.isEmpty {
-                calls.append(tmpItems)
+                groupedCalls.append(tmpItems)
             }
             firstItem = groupingPeriod
             tmpItems = [item]
@@ -249,10 +249,10 @@ func groupCall(items: [Call], at period: Periods) {
         }
     }
     if !tmpItems.isEmpty {
-        calls.append(tmpItems)
+        groupedCalls.append(tmpItems)
     }
     
-    calls = collapsCalls(at: period)
+    groupedCalls = collapsCalls(at: period)
 }
 
 

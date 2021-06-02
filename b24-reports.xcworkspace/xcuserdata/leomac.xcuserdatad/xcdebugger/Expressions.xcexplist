@@ -3,84 +3,57 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "Call.init(dictionary:):Model.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "dictionary[&quot;timeOfIncoming&quot;]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in loadManagersFromCloud():Model.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "document.data()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CallsTableViewController.numberOfSections(in:):CallsTableViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "events">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Managers.addRecords(manager:):Managers+CoreDataClass.swift">
-      </ContextState>
-      <ContextState
-         contextName = "DetailCallViewController.viewDidLoad():DetailCallViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "call != nil">
-            </PersistentString>
-            <PersistentString
-               value = "call">
-            </PersistentString>
-            <PersistentString
-               value = "call.dateFormated">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "sortCall(items:):Model.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "events">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CallsViewController.tableView(_:titleForHeaderInSection:):CallsViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "po NSCalendar.current.dateComponents([.weekOfYear], from: date)">
-            </PersistentString>
-            <PersistentString
-               value = "segmentedControl.selectedSegmentIndex">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "AuthViewController.logIn(email:password:callbacK:):AuthViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "user">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "AuthViewController.signAction(_:):AuthViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "error">
             </PersistentString>
             <PersistentString
-               value = "authResult">
+               value = "firebaseUser">
             </PersistentString>
             <PersistentString
-               value = "firebaseUser">
+               value = "authResult">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "events.getter:Model.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "events">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "loadManagersFromCloud():Model.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "err">
+            </PersistentString>
+            <PersistentString
+               value = "FIRFirestoreService">
+            </PersistentString>
+            <PersistentString
+               value = "querySnapshot">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CallsTableViewController.viewWillAppear(_:):CallsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "callItems">
+            </PersistentString>
+            <PersistentString
+               value = "UIScreen.mainScreen().bounds">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CallsViewController.tableView(_:numberOfRowsInSection:):CallsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "events">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -102,7 +75,51 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "events.getter:Model.swift">
+         contextName = "AuthViewController.logIn(email:password:callbacK:):AuthViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "user">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in CallsViewController.handleRefreshControl(sender:):CallsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "calls">
+            </PersistentString>
+            <PersistentString
+               value = "groupedCalls">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in loadCallsFromCloud():FirestoreLoaders.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "document.data()">
+            </PersistentString>
+            <PersistentString
+               value = "groupedCalls">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in loadCallsFromCloud():Model.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "querySnapshot!.documents.count">
+            </PersistentString>
+            <PersistentString
+               value = "document.data()">
+            </PersistentString>
+            <PersistentString
+               value = "call">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CallsTableViewController.numberOfSections(in:):CallsTableViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "events">
@@ -110,13 +127,54 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CallsTableViewController.viewWillAppear(_:):CallsTableViewController.swift">
+         contextName = "CallsViewController.tableView(_:titleForHeaderInSection:):CallsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "callItems">
+               value = "po NSCalendar.current.dateComponents([.weekOfYear], from: date)">
             </PersistentString>
             <PersistentString
-               value = "UIScreen.mainScreen().bounds">
+               value = "segmentedControl.selectedSegmentIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "sortCall(items:):Model.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "events">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CallsTableViewController.tableView(_:numberOfRowsInSection:):CallsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "callItems.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Managers.addRecords(manager:):Managers+CoreDataClass.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in loadManagersFromCloud():Model.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "document.data()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DetailCallViewController.viewDidLoad():DetailCallViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "call != nil">
+            </PersistentString>
+            <PersistentString
+               value = "call.dateFormated">
+            </PersistentString>
+            <PersistentString
+               value = "call">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -137,46 +195,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "loadManagersFromCloud():Model.swift">
+         contextName = "Call.init(dictionary:):Model.swift">
          <PersistentStrings>
             <PersistentString
-               value = "err">
-            </PersistentString>
-            <PersistentString
-               value = "FIRFirestoreService">
-            </PersistentString>
-            <PersistentString
-               value = "querySnapshot">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CallsTableViewController.tableView(_:numberOfRowsInSection:):CallsTableViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "callItems.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in loadCallsFromCloud():Model.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "querySnapshot!.documents.count">
-            </PersistentString>
-            <PersistentString
-               value = "document.data()">
-            </PersistentString>
-            <PersistentString
-               value = "call">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CallsViewController.tableView(_:numberOfRowsInSection:):CallsViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "events">
+               value = "dictionary[&quot;timeOfIncoming&quot;]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -31,10 +31,10 @@ func loadManagersFromCloud() {
 
 func loadCallsFromCloud() {
     
-    let calls = Calls()
+    let coreDataCalls = Calls()
     
     // erase CoreData
-    calls.deleteAllRecords()
+    coreDataCalls.deleteAllRecords()
     
     // writing call to CoreData
     FIRFirestoreService.shared.db.collection("calls").getDocuments() { (querySnapshot, err) in
@@ -43,7 +43,7 @@ func loadCallsFromCloud() {
         } else {
             for document in querySnapshot!.documents {
                 if let call = Call(dictionary: document.data()) {
-                    calls.addRecords(call: call)
+                    coreDataCalls.addRecords(call: call)
                 }
             }
         }
