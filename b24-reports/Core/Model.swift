@@ -136,7 +136,7 @@ var callItems: [Call] {
     return callArray
 }
 
-var groupedCalls: [[Call]] = []
+var groupedCalls: [[Call]] = [[Call]]()
 //var filteredCallItems = [Call]()
 
 
