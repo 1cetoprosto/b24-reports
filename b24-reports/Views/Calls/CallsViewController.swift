@@ -5,19 +5,32 @@
 //  Created by leomac on 24.04.2021.
 //
 
-import UIKit
 import FirebaseAuth
+import SnapKit
+import UIKit
 
 class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var handle: AuthStateDidChangeListenerHandle?
     
-    let tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+                
         // Setup the Cell
         let nib = UINib(nibName: "CallsTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "CallsTableViewCell")
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Load data...")
+        tableView.refreshControl?.addTarget(self,
+                                            action: #selector(handleRefreshControl(sender:)),
+                                            for: .valueChanged)
+        
+        tableView.tableFooterView = UIView()
         
         return tableView
     }()
@@ -31,8 +44,10 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     let groupedLabel: UILabel = {
         let groupedLabel = UILabel()
-        groupedLabel.translatesAutoresizingMaskIntoConstraints = false
+        groupedLabel.font.withSize(13)
+        groupedLabel.textColor = UIColor.placeholderText
         groupedLabel.text = "grouped by:"
+        groupedLabel.translatesAutoresizingMaskIntoConstraints = false
         
         return groupedLabel
     }()
@@ -41,6 +56,9 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let segmentedControl: UISegmentedControl = {
         let items = ["Day", "Week", "Month"]
         let segmentedControl = UISegmentedControl(items: items)
+        segmentedControl.addTarget(self, action: #selector(segmentAction(_:)), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.tintColor = UIColor.black
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         
         return segmentedControl
@@ -99,26 +117,41 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(groupedLabel)
-        view.addSubview(segmentedControl)
-        view.addSubview(tableView)
-        
-        
-        groupCall(items: callItems, at: .day)
-        setUpNavigation()
-        
-        setUpgroupedLabel()
-        setUpSegmentedControl()
-        setUpTableView()
-        
-        //self.navigationItem.setLeftBarButton(item1, animated: true)
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-
+        initialize()
     }
     
     // MARK: - SetUp View's
+    
+    func initialize() {
+        view.addSubview(groupedLabel)
+        view.addSubview(segmentedControl)
+        view.addSubview(tableView)
+                
+        groupCall(items: callItems, at: .day)
+        
+        setUpNavigation()
+        
+        groupedLabel.snp.makeConstraints { maker in
+            maker.top.equalToSuperview().inset(10)
+            maker.leading.equalToSuperview().inset(16)
+            maker.height.equalTo(30)
+            maker.width.equalTo(100)
+        }
+        
+        segmentedControl.snp.makeConstraints { maker in
+            maker.top.equalToSuperview().inset(10)
+            maker.leading.equalTo(groupedLabel.snp.trailing).inset(10)
+            maker.trailing.equalToSuperview().inset(-16)
+            maker.height.equalTo(30)
+        }
+        
+        tableView.snp.makeConstraints { maker in
+            maker.top.equalToSuperview().inset(50)
+            maker.leading.equalToSuperview()
+            maker.trailing.equalToSuperview()
+            maker.bottom.equalToSuperview()
+        }
+    }
     
     func setUpNavigation() {
         
@@ -128,45 +161,6 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9921568627, green: 0.7411764706, blue: 0.1568627451, alpha: 1)
         self.navigationController?.navigationBar.isTranslucent = false
         //self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-    }
-    
-    func setUpgroupedLabel() {
-        groupedLabel.font.withSize(13)
-        groupedLabel.textColor = UIColor.placeholderText
-        groupedLabel.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        groupedLabel.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        groupedLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        groupedLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-    }
-    
-    func setUpSegmentedControl()  {
-        segmentedControl.addTarget(self, action: #selector(segmentAction(_:)), for: .valueChanged)
-        segmentedControl.selectedSegmentIndex = 0
-        
-        segmentedControl.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        segmentedControl.leadingAnchor.constraint(equalTo:groupedLabel.trailingAnchor, constant: 10).isActive = true
-        segmentedControl.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-        //segmentedControl.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        segmentedControl.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        segmentedControl.tintColor = UIColor.black
-    }
-    
-    func setUpTableView() {
-        
-        //tableView.refreshControl = myRefreshControl
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Load data...")
-        tableView.refreshControl?.addTarget(self,
-                                            action: #selector(handleRefreshControl(sender:)),
-                                            for: .valueChanged)
-
-        tableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        tableView.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
-        tableView.tableFooterView = UIView()
-        
     }
     
     @objc func segmentAction(_ segmentedControl: UISegmentedControl) {
@@ -179,7 +173,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
+
         return groupedCalls.count
     }
     

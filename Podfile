@@ -9,5 +9,6 @@ target 'b24-reports' do
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'FirebaseFirestoreSwift'
+pod 'SnapKit'
 
 end
