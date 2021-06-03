@@ -13,13 +13,11 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var handle: AuthStateDidChangeListenerHandle?
     
+    let callsTableViewCellReuseIdentifier = "CallsTableViewCell"
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-                
-        // Setup the Cell
-        let nib = UINib(nibName: "CallsTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "CallsTableViewCell")
+        tableView.register(CallsTableViewCell.self, forCellReuseIdentifier: callsTableViewCellReuseIdentifier)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -47,8 +45,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         groupedLabel.font.withSize(13)
         groupedLabel.textColor = UIColor.placeholderText
         groupedLabel.text = "grouped by:"
-        groupedLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+               
         return groupedLabel
     }()
     
@@ -59,7 +56,6 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         segmentedControl.addTarget(self, action: #selector(segmentAction(_:)), for: .valueChanged)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.tintColor = UIColor.black
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         
         return segmentedControl
     }()
@@ -188,7 +184,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CallsTableViewCell", for: indexPath) as! CallsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: callsTableViewCellReuseIdentifier, for: indexPath) as! CallsTableViewCell
         
         // Configure the cell...
         var currentItem: Call
