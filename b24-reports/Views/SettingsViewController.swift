@@ -9,30 +9,40 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    //MARK: Private properties
+    private enum UIConstants {
+        static let height: CGFloat = 50
+        static let width: CGFloat = 150
+        static let cornerRadius: CGFloat = 5
+        static let fontSize: CGFloat = 15
+    }
     
-    @IBOutlet weak var updateData: UIButton!
+    private lazy var updateData: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.backgroundColor = .green
+        btn.layer.cornerRadius = CGFloat(UIConstants.cornerRadius)
+        btn.setTitle("Update Data", for: .normal)
+        btn.addTarget(self, action: #selector(updateDataAction), for: .touchUpInside)
+
+        return btn
+    }()
     
-    @IBAction func updateDataAction(_ sender: UIButton) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initialize()
+    }
+
+    @objc func updateDataAction(sender: UIButton!) {
         loadManagersFromCloud()
         loadCallsFromCloud()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        updateData.layer.cornerRadius = CGFloat(5)
+    private func initialize() {
+        view.addSubview(updateData)
+        updateData.snp.makeConstraints { maker in
+            maker.centerX.centerY.equalToSuperview()
+            maker.width.equalTo(UIConstants.width)
+            maker.height.equalTo(UIConstants.height)
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

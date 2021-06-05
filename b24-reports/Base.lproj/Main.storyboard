@@ -143,28 +143,10 @@
                     <view key="view" contentMode="scaleToFill" id="Fhk-dZ-L12">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vk7-pf-tB5">
-                                <rect key="frame" x="140" y="295" width="94" height="33"/>
-                                <color key="backgroundColor" red="1" green="0.70196078429999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Update data"/>
-                                <connections>
-                                    <action selector="updateDataAction:" destination="L5A-u1-lYd" eventType="touchUpInside" id="D6b-FN-R6p"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1di-F3-rDa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Vk7-pf-tB5" firstAttribute="centerX" secondItem="1di-F3-rDa" secondAttribute="centerX" constant="-0.5" id="gnP-8w-hZt"/>
-                            <constraint firstItem="Vk7-pf-tB5" firstAttribute="centerY" secondItem="1di-F3-rDa" secondAttribute="centerY" constant="-22" id="z3L-NG-WIm"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lXX-o0-y55"/>
-                    <connections>
-                        <outlet property="updateData" destination="Vk7-pf-tB5" id="mOy-VH-3Zf"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6MV-jp-OlS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
