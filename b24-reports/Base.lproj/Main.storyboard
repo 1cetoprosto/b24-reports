@@ -19,83 +19,9 @@
                             <userLayoutGuide location="16" affinity="minX"/>
                             <userLayoutGuide location="398" affinity="minX"/>
                         </userGuides>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qia-Rc-aXI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header" translatesAutoresizingMaskIntoConstraints="NO" id="atV-R8-0M2">
-                                        <rect key="frame" x="0.0" y="8" width="375" height="250"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="oyz-11-wP2"/>
-                                        </constraints>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="KY0-5E-QUZ">
-                                        <rect key="frame" x="0.0" y="266" width="375" height="393"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nte-5D-ZGP">
-                                                <rect key="frame" x="16" y="8" width="343" height="30"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="53w-qe-zdK">
-                                                <rect key="frame" x="16" y="75" width="343" height="116"/>
-                                                <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d9r-1L-Vyn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="umq-q6-JuF"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eNL-f0-ZBI">
-                                                        <rect key="frame" x="0.0" y="66" width="343" height="50"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                </subviews>
-                                            </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpc-ie-BQx">
-                                                <rect key="frame" x="16" y="228" width="343" height="50"/>
-                                                <color key="backgroundColor" red="1" green="0.70196078431372544" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="9pC-bd-on0"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Continue">
-                                                    <color key="titleColor" red="1" green="0.98823529409999999" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="signAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Syj-bS-ez7"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nU5-XI-Q0N">
-                                                <rect key="frame" x="16" y="315" width="343" height="70"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                        </subviews>
-                                        <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
-                                    </stackView>
-                                </subviews>
-                                <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
-                            </stackView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Qia-Rc-aXI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="JPd-vR-kEf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qia-Rc-aXI" secondAttribute="bottom" id="mR2-nh-DBH"/>
-                            <constraint firstItem="Qia-Rc-aXI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="moA-SG-4Su"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qia-Rc-aXI" secondAttribute="trailing" id="rQi-g2-n0n"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="emailField" destination="d9r-1L-Vyn" id="Tia-Vl-aEF"/>
-                        <outlet property="enterButton" destination="Fpc-ie-BQx" id="0N9-ZZ-3Xe"/>
-                        <outlet property="passwordField" destination="eNL-f0-ZBI" id="L7D-zu-nfb"/>
-                        <outlet property="titleLabel" destination="nte-5D-ZGP" id="xEU-Wf-Jmw"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -172,7 +98,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Header" width="566" height="566"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
