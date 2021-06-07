@@ -154,9 +154,6 @@ func groupedPeriod(at date: Date, period: Periods) -> String {
     case .month:
         formatter.dateFormat = "MMMM YYYY"
         groupedPeriod = formatter.string(from: date)
-    default:
-        formatter.dateFormat = "d MMMM YYYY"
-        groupedPeriod = formatter.string(from: date)
     }
     
     return groupedPeriod
