@@ -38,6 +38,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func initialize() {
+        view.backgroundColor = .white
         view.addSubview(updateData)
         updateData.snp.makeConstraints { maker in
             maker.centerX.centerY.equalToSuperview()

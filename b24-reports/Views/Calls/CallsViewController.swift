@@ -119,6 +119,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - SetUp View's
     
     func initialize() {
+        view.backgroundColor = .white
         view.addSubview(groupedLabel)
         view.addSubview(segmentedControl)
         view.addSubview(tableView)
@@ -246,8 +247,8 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @objc func transitionToSettings() {
         
-        let settingsVC = storyboard?.instantiateViewController(identifier: "SettingsViewController") as? SettingsViewController
-        navigationController?.pushViewController(settingsVC!, animated: true)
+        //let settingsVC = storyboard?.instantiateViewController(identifier: "SettingsViewController") as? SettingsViewController
+        navigationController?.pushViewController(SettingsViewController(), animated: true)
         
         //performSegue(withIdentifier: "goToSettings", sender: self)
         
