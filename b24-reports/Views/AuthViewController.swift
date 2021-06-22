@@ -101,6 +101,7 @@ class AuthViewController: UIViewController {
     }
     
     private func initializer() {
+        view.backgroundColor = .white
         view.addSubview(stackView_Main)
         stackView_Main.snp.makeConstraints { maker in
             maker.top.equalToSuperview().inset(UIConstants.topInset)
