@@ -13,6 +13,8 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var handle: AuthStateDidChangeListenerHandle?
     
+    private var gallaryCollectionView = GalleryCollectionView()
+    
     let callsTableViewCellReuseIdentifier = "CallsTableViewCell"
     
     lazy var tableView: UITableView = {
@@ -60,6 +62,14 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return segmentedControl
     }()
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @objc func logoutAction(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -78,13 +88,6 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.tableView.reloadData()
             sender.endRefreshing()
         }
-    }
-    
-    @IBAction func unwindToCallsViewController(segue: UIStoryboardSegue) {
-        
-        groupCall(items: callItems, at: .day)
-        
-        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -123,7 +126,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         view.addSubview(groupedLabel)
         view.addSubview(segmentedControl)
         view.addSubview(tableView)
-                
+        
         groupCall(items: callItems, at: .day)
         
         setUpNavigation()
@@ -148,6 +151,16 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             maker.trailing.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
+        
+//        view.addSubview(gallaryCollectionView)
+//        gallaryCollectionView.snp.makeConstraints { maker in
+//            maker.leading.equalToSuperview().inset(20)
+//            maker.trailing.equalToSuperview()
+//            maker.top.equalTo(tableView).inset(50)
+//            maker.height.equalTo(132)
+//        }
+//        
+//        gallaryCollectionView.set(cells: CellsModel.fetchCells())
     }
     
     func setUpNavigation() {
@@ -206,29 +219,32 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     //    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToDetailCallView", sender: self)
+        //performSegue(withIdentifier: "goToDetailCallView", sender: self)
+        let detailVC = DetailCallViewController(callInit: groupedCalls[indexPath.section][indexPath.row])!
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        
     }
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToDetailCallView" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                
-                var call: Call
-                //                if isFiltering {
-                //                    task = filteredToDoItems[indexPath.row]
-                //                } else {
-                call = groupedCalls[indexPath.section][indexPath.row] //callItems[indexPath.row]
-                //                }
-                
-                (segue.destination as? DetailCallViewController)?.call = call
-                
-                tableView.deselectRow(at: indexPath, animated: true)
-            }
-        }
-    }
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "goToDetailCallView" {
+//            if let indexPath = tableView.indexPathForSelectedRow {
+//
+//                var call: Call
+//                //                if isFiltering {
+//                //                    task = filteredToDoItems[indexPath.row]
+//                //                } else {
+//                call = groupedCalls[indexPath.section][indexPath.row] //callItems[indexPath.row]
+//                //                }
+//
+//                (segue.destination as? DetailCallViewController)?.call = call
+//
+//                tableView.deselectRow(at: indexPath, animated: true)
+//            }
+//        }
+//    }
     
     func transitionToLogin() {
         
@@ -239,7 +255,7 @@ class CallsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         view.window?.makeKeyAndVisible()
         */
         
-        guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "AuthViewController") as? AuthViewController else {return}
+        let loginVC = AuthViewController()// as? AuthViewController else {return}
         loginVC.modalPresentationStyle = .fullScreen
         present(loginVC, animated: true, completion: nil)
         

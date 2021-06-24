@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B12E330A262074660077B980 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12E3309262074660077B980 /* Extensions.swift */; };
 		B13EA89F26412C25001083EE /* FirestoreLoaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13EA89E26412C25001083EE /* FirestoreLoaders.swift */; };
+		B14611F92684A7BD004EDD9E /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14611F82684A7BD004EDD9E /* GalleryCollectionView.swift */; };
+		B14611FB2684AEF0004EDD9E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14611FA2684AEF0004EDD9E /* CollectionViewCell.swift */; };
+		B14611FD2684AFE4004EDD9E /* CellsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14611FC2684AFE4004EDD9E /* CellsModel.swift */; };
 		B14921CF262464C8006B3388 /* Calls+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14921CE262464C8006B3388 /* Calls+CoreDataClass.swift */; };
 		B14921D0262464C8006B3388 /* Managers+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14921CC262464C7006B3388 /* Managers+CoreDataClass.swift */; };
 		B14921D1262464C8006B3388 /* Managers+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14921CD262464C8006B3388 /* Managers+CoreDataProperties.swift */; };
@@ -33,6 +36,9 @@
 		9DF7F624C5C87EEF914EA59E /* Pods-b24-reports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-b24-reports.debug.xcconfig"; path = "Target Support Files/Pods-b24-reports/Pods-b24-reports.debug.xcconfig"; sourceTree = "<group>"; };
 		B12E3309262074660077B980 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B13EA89E26412C25001083EE /* FirestoreLoaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreLoaders.swift; sourceTree = "<group>"; };
+		B14611F82684A7BD004EDD9E /* GalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
+		B14611FA2684AEF0004EDD9E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		B14611FC2684AFE4004EDD9E /* CellsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsModel.swift; sourceTree = "<group>"; };
 		B14921CB262464C7006B3388 /* Calls+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Calls+CoreDataProperties.swift"; path = "/Users/leomac/Documents/Swift/b24-reports/b24-reports/Core/Calls+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		B14921CC262464C7006B3388 /* Managers+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Managers+CoreDataClass.swift"; path = "/Users/leomac/Documents/Swift/b24-reports/b24-reports/Core/Managers+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		B14921CD262464C8006B3388 /* Managers+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Managers+CoreDataProperties.swift"; path = "/Users/leomac/Documents/Swift/b24-reports/b24-reports/Core/Managers+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
@@ -127,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				B1DC0B7926205BDF00A8679C /* AuthViewController.swift */,
+				B14611F82684A7BD004EDD9E /* GalleryCollectionView.swift */,
+				B14611FA2684AEF0004EDD9E /* CollectionViewCell.swift */,
 				B14921DE262589AA006B3388 /* SettingsViewController.swift */,
 				B142E9642629794300E86047 /* Calls */,
 			);
@@ -147,6 +155,7 @@
 			children = (
 				B142E9652629799200E86047 /* Models */,
 				B17313EA2622BC8A008002DB /* Model.swift */,
+				B14611FC2684AFE4004EDD9E /* CellsModel.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -302,6 +311,8 @@
 			files = (
 				B14921D0262464C8006B3388 /* Managers+CoreDataClass.swift in Sources */,
 				B14921D1262464C8006B3388 /* Managers+CoreDataProperties.swift in Sources */,
+				B14611FB2684AEF0004EDD9E /* CollectionViewCell.swift in Sources */,
+				B14611F92684A7BD004EDD9E /* GalleryCollectionView.swift in Sources */,
 				B1C46286263404D00064416C /* CallsViewController.swift in Sources */,
 				B17313EB2622BC8A008002DB /* Model.swift in Sources */,
 				B1DC0B7A26205BDF00A8679C /* AuthViewController.swift in Sources */,
@@ -316,6 +327,7 @@
 				B1DC0B7826205BDF00A8679C /* SceneDelegate.swift in Sources */,
 				B13EA89F26412C25001083EE /* FirestoreLoaders.swift in Sources */,
 				B14921CF262464C8006B3388 /* Calls+CoreDataClass.swift in Sources */,
+				B14611FD2684AFE4004EDD9E /* CellsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

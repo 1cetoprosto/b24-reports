@@ -52,6 +52,15 @@ class DetailCallViewController: UIViewController {
     private lazy var stackView_TimeIn = horizontalStackView(subviews: [lblNameTimeIn, lblTimeIn])
     private lazy var stackView_TimeOut = horizontalStackView(subviews: [lblNameTimeOut, lblTimeOut])
     
+    init?(callInit: Call) {
+        call = callInit
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +76,7 @@ class DetailCallViewController: UIViewController {
     }
     
     private func initialize() {
+        view.backgroundColor = .white
         view.addSubview(stackView_Main)
         stackView_Main.snp.makeConstraints { maker in
             maker.top.equalToSuperview().inset(UIConstants.topInset)
